@@ -28,7 +28,7 @@ big_integer::big_integer(const big_integer &object_to_copy)
     notation = object_to_copy.notation;
 }
 
-big_integer::big_integer(big_integer &&object_to_move)
+big_integer::big_integer(big_integer &&object_to_move) noexcept
 {
     notation = std::move(object_to_move.notation);
 }
@@ -48,13 +48,13 @@ big_integer& big_integer::operator=(const big_integer &value_to_assign)
     return *this;
 }
 
-big_integer& big_integer::operator=(big_integer &&value_to_assign)
+big_integer& big_integer::operator=(big_integer &&value_to_assign) noexcept
 {
     if (this == &value_to_assign)
     {
         return *this;
     }
-    big_integer tmp = big_integer(value_to_assign);
+    big_integer tmp = std::move(value_to_assign);
     swap(tmp);
     return *this;
 }

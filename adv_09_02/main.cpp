@@ -24,7 +24,8 @@ int main()
         int multiplier = 317;
         i4.print();
         std::cout << " * " << multiplier << " = ";
-        big_integer i5 = i4 * multiplier;
+        big_integer i5;
+        i5 = big_integer(i4 * multiplier);
         i5.print();
         std::cout << std::endl;
     }
